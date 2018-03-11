@@ -4,6 +4,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import static com.martianrobots.model.Position.position;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MarsSurfaceTest {
@@ -26,9 +27,20 @@ public class MarsSurfaceTest {
     }
 
     @Test
-    public void shouldCreateMarsSurfaceObjectIfTopRightPositionIsNotOutOfRange() {
+    public void shouldReturnTrueIfPositionPassedIsWithinBounds() {
         MarsSurface marsSurface = new MarsSurface(5, 2);
-        assertThat(marsSurface.getTopRightXCoordinate()).isEqualTo(5);
-        assertThat(marsSurface.getTopRightYCoordinate()).isEqualTo(2);
+        assertThat(marsSurface.isWithinBounds(position(2, 2))).isEqualTo(true);
+    }
+
+    @Test
+    public void shouldReturnTrueIfPositionPassedIsOnTheEdgeOfBounds() {
+        MarsSurface marsSurface = new MarsSurface(5, 2);
+        assertThat(marsSurface.isWithinBounds(position(5, 2))).isEqualTo(true);
+    }
+
+    @Test
+    public void shouldReturnFalseIfPositionPassedIsNotWithinBounds() {
+        MarsSurface marsSurface = new MarsSurface(5, 2);
+        assertThat(marsSurface.isWithinBounds(position(2, 3))).isEqualTo(false);
     }
 }

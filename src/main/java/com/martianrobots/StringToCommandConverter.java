@@ -1,6 +1,7 @@
 package com.martianrobots;
 
 import com.martianrobots.command.Command;
+import com.martianrobots.command.ForwardCommand;
 import com.martianrobots.command.LeftCommand;
 import com.martianrobots.command.RightCommand;
 
@@ -14,6 +15,7 @@ public class StringToCommandConverter {
     private static final Map<String, Command> stringCommandMap = new HashMap<String, Command>() {{
         put("L", new LeftCommand());
         put("R", new RightCommand());
+        put("F", new ForwardCommand());
     }};
 
     static String[] parseInstruction(String instructions) {

@@ -47,4 +47,8 @@ public class Position {
     public int getYCoordinate() {
         return yCoordinate;
     }
+
+    public Position calculateNextPosition(Position position) {
+        return new Position(this.xCoordinate + position.xCoordinate, this.yCoordinate + position.yCoordinate);
+    }
 }

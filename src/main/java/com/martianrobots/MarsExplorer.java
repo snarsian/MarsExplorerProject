@@ -25,7 +25,7 @@ public class MarsExplorer {
         for (Robot robot : robots) {
             //execute robot commands, for each robot save there positions and also save final position
             for (Command command : robot.getCommands()) {
-                command.execute(robot);
+                command.execute(robot, marsSurface);
             }
         }
     }

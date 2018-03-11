@@ -1,5 +1,6 @@
 package com.martianrobots.command;
 
+import com.martianrobots.MarsSurface;
 import com.martianrobots.Robot;
 import com.martianrobots.model.Orientation;
 import org.junit.Test;
@@ -13,8 +14,9 @@ public class LeftCommandTest {
     @Test
     public void testTheCommandMovesTheOrientationTowardsLeft() {
         LeftCommand leftCommand = new LeftCommand();
+        MarsSurface marsSurface = new MarsSurface(5, 3);
         Robot robot = robot(position(1, 1), Orientation.E, "L");
-        leftCommand.execute(robot);
+        leftCommand.execute(robot, marsSurface);
 
         assertThat(robot.getCurrentOrientation()).isEqualTo(Orientation.N);
     }

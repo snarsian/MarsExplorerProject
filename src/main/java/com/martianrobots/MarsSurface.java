@@ -1,13 +1,16 @@
 package com.martianrobots;
 
+import com.martianrobots.model.Position;
+
+import static com.martianrobots.model.Position.position;
+
 public class MarsSurface {
-    private final int topRightXCoordinate;
-    private final int topRightYCoordinate;
+    private Position topRight;
+    private Position bottomLeft = position(0, 0);
 
     public MarsSurface(int topRightXCoordinate, int topRightYCoordinate) {
         validateTheInputCoordinates(topRightXCoordinate, topRightYCoordinate);
-        this.topRightXCoordinate = topRightXCoordinate;
-        this.topRightYCoordinate = topRightYCoordinate;
+        this.topRight = position(topRightXCoordinate, topRightYCoordinate);
     }
 
     private void validateTheInputCoordinates(int topRightXPosition, int topRightYPosition) {
@@ -16,11 +19,10 @@ public class MarsSurface {
         }
     }
 
-    public int getTopRightXCoordinate() {
-        return topRightXCoordinate;
-    }
-
-    public int getTopRightYCoordinate() {
-        return topRightYCoordinate;
+    public boolean isWithinBounds(Position position) {
+        return position.getXCoordinate() <= topRight.getXCoordinate()
+                && position.getYCoordinate() <= topRight.getYCoordinate()
+                && position.getXCoordinate() >= bottomLeft.getXCoordinate()
+                && position.getYCoordinate() >= bottomLeft.getYCoordinate();
     }
 }

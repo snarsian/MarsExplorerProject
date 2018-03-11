@@ -1,7 +1,9 @@
 package com.martianrobots;
 
 import com.martianrobots.command.Command;
+import com.martianrobots.command.ForwardCommand;
 import com.martianrobots.command.LeftCommand;
+import com.martianrobots.command.RightCommand;
 import org.junit.Test;
 
 import java.util.List;
@@ -28,11 +30,20 @@ public class StringToCommandConverterTest {
 
     @Test
     public void shouldBeAbleToConvertRightInstructionToCommand() {
-        fail("To implement this");
+        List<Command> commands = convert("R");
+        assertThat(commands.size()).isEqualTo(1);
+        assertThat(commands.get(0)).isInstanceOf(RightCommand.class);
     }
 
     @Test
     public void shouldBeAbleToConvertForwardInstructionToCommand() {
-        fail("To implement this");
+        List<Command> commands = convert("F");
+        assertThat(commands.size()).isEqualTo(1);
+        assertThat(commands.get(0)).isInstanceOf(ForwardCommand.class);
+    }
+
+    @Test
+    public void shouldBeAbleToConvertMultipleInstructionsToCommands() {
+        assertThat(convert("FFLR").size()).isEqualTo(4);
     }
 }

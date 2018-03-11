@@ -61,4 +61,12 @@ public class Robot {
     public String getFinalResult() {
         return String.format("%d %d %s", currentPosition.getXCoordinate(), currentPosition.getYCoordinate(), currentOrientation);
     }
+
+    public void setCurrentPosition(Position currentPosition) {
+        this.currentPosition = currentPosition;
+    }
+
+    public boolean isLost() {
+        return false;
+    }
 }

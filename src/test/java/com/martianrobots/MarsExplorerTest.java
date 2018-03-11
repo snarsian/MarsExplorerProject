@@ -36,6 +36,27 @@ public class MarsExplorerTest {
 
     @Test
     public void testIfRobotCanMoveForward() {
-        fail("Yet to be implemented");
+        MarsExplorer explorer = new MarsExplorer(5, 3);
+        Robot robot = robot(position(1, 1), Orientation.E, "F");
+        explorer.addRobot(robot);
+        explorer.explore();
+
+        assertThat(robot.getCurrentPosition()).isEqualTo(position(2, 1));
+        assertThat(robot.getCurrentOrientation()).isEqualTo(Orientation.E);
+        assertThat(robot.getFinalResult()).isEqualTo("2 1 E");
+    }
+
+    @Test
+    public void testIfRobotFallsOfTheEdgeItOutputsWordLost() {
+        MarsExplorer explorer = new MarsExplorer(5, 3);
+        Robot robot = robot(position(3, 2), Orientation.N, "FRRFLLFFRRFLL");
+        explorer.addRobot(robot);
+
+        explorer.explore();
+
+        assertThat(robot.getCurrentPosition()).isEqualTo(position(3, 3));
+        assertThat(robot.getCurrentOrientation()).isEqualTo(Orientation.N);
+        assertThat(robot.isLost()).isEqualTo(true);
+        assertThat(robot.getFinalResult()).isEqualTo("3 3 N LOST");
     }
 }
