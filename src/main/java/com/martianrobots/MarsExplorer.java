@@ -1,5 +1,7 @@
 package com.martianrobots;
 
+import com.martianrobots.command.Command;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +22,11 @@ public class MarsExplorer {
     }
 
     public void explore() {
-        //TODO to implement this
+        for (Robot robot : robots) {
+            //execute robot commands, for each robot save there positions and also save final position
+            for (Command command : robot.getCommands()) {
+                command.execute(robot);
+            }
+        }
     }
 }

@@ -57,4 +57,8 @@ public class Robot {
     public List<Command> getCommands() {
         return commands;
     }
+
+    public String getFinalResult() {
+        return String.format("%d %d %s", currentPosition.getXCoordinate(), currentPosition.getYCoordinate(), currentOrientation);
+    }
 }
