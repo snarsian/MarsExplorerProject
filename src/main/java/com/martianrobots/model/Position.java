@@ -14,6 +14,18 @@ public class Position {
         return new Position(xCoordinate,yCoordinate);
     }
 
+    public int getXCoordinate() {
+        return xCoordinate;
+    }
+
+    public int getYCoordinate() {
+        return yCoordinate;
+    }
+
+    public Position calculateNextPosition(Position position) {
+        return new Position(this.xCoordinate + position.xCoordinate, this.yCoordinate + position.yCoordinate);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,17 +50,5 @@ public class Position {
                 "xCoordinate=" + xCoordinate +
                 ", yCoordinate=" + yCoordinate +
                 '}';
-    }
-
-    public int getXCoordinate() {
-        return xCoordinate;
-    }
-
-    public int getYCoordinate() {
-        return yCoordinate;
-    }
-
-    public Position calculateNextPosition(Position position) {
-        return new Position(this.xCoordinate + position.xCoordinate, this.yCoordinate + position.yCoordinate);
     }
 }

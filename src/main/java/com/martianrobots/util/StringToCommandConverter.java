@@ -1,4 +1,4 @@
-package com.martianrobots;
+package com.martianrobots.util;
 
 import com.martianrobots.command.Command;
 import com.martianrobots.command.ForwardCommand;
@@ -13,13 +13,14 @@ import java.util.Map;
 public class StringToCommandConverter {
 
     private static final Map<String, Command> stringCommandMap = new HashMap<String, Command>() {{
+        put("F", new ForwardCommand());
         put("L", new LeftCommand());
         put("R", new RightCommand());
-        put("F", new ForwardCommand());
     }};
+    private static final String SEPARATE_EACH_LETTER = "";
 
     static String[] parseInstruction(String instructions) {
-        return instructions.split("");
+        return instructions.split(SEPARATE_EACH_LETTER);
     }
 
     public static List<Command> convert(String instructions) {

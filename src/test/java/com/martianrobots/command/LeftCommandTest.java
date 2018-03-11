@@ -15,7 +15,7 @@ public class LeftCommandTest {
     public void testTheCommandMovesTheOrientationTowardsLeft() {
         LeftCommand leftCommand = new LeftCommand();
         MarsSurface marsSurface = new MarsSurface(5, 3);
-        Robot robot = robot(position(1, 1), Orientation.E, "L");
+        Robot robot = robot(position(1, 1), Orientation.E, "");
         leftCommand.execute(robot, marsSurface);
 
         assertThat(robot.getCurrentOrientation()).isEqualTo(Orientation.N);

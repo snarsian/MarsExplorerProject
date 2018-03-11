@@ -15,7 +15,7 @@ public class RightCommandTest {
     public void testTheCommandMovesTheOrientationTowardsRight() {
         RightCommand rightCommand = new RightCommand();
         MarsSurface marsSurface = new MarsSurface(5, 3);
-        Robot robot = robot(position(1, 1), Orientation.E, "R");
+        Robot robot = robot(position(1, 1), Orientation.E, "");
         rightCommand.execute(robot, marsSurface);
 
         assertThat(robot.getCurrentOrientation()).isEqualTo(Orientation.S);

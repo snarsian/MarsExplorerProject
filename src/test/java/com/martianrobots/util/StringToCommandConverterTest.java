@@ -1,4 +1,4 @@
-package com.martianrobots;
+package com.martianrobots.util;
 
 import com.martianrobots.command.Command;
 import com.martianrobots.command.ForwardCommand;
@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static com.martianrobots.StringToCommandConverter.convert;
+import static com.martianrobots.util.StringToCommandConverter.convert;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.fail;
 

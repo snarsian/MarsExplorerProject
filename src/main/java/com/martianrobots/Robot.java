@@ -3,9 +3,9 @@ package com.martianrobots;
 import com.martianrobots.command.Command;
 import com.martianrobots.model.Orientation;
 import com.martianrobots.model.Position;
+import com.martianrobots.util.StringToCommandConverter;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.List;
 
 public class Robot {
@@ -14,6 +14,7 @@ public class Robot {
     private Orientation currentOrientation;
     private final String instructions;
     private List<Command> commands = new ArrayList<Command>();
+    private boolean lost;
 
     private Robot(Position currentPosition, Orientation currentOrientation, String instructions) {
         this.currentPosition = currentPosition;
@@ -41,15 +42,6 @@ public class Robot {
         return instructions;
     }
 
-    @Override
-    public String toString() {
-        return "Robot{" +
-                "currentPosition=" + currentPosition +
-                ", currentOrientation=" + currentOrientation +
-                ", instructions='" + instructions + '\'' +
-                '}';
-    }
-
     public void addCommands(String instructions) {
         commands = StringToCommandConverter.convert(instructions);
     }
@@ -59,7 +51,7 @@ public class Robot {
     }
 
     public String getFinalResult() {
-        return String.format("%d %d %s", currentPosition.getXCoordinate(), currentPosition.getYCoordinate(), currentOrientation);
+        return String.format("%d %d %s%s", currentPosition.getXCoordinate(), currentPosition.getYCoordinate(), currentOrientation, lost ?" LOST":"");
     }
 
     public void setCurrentPosition(Position currentPosition) {
@@ -67,6 +59,19 @@ public class Robot {
     }
 
     public boolean isLost() {
-        return false;
+        return this.lost;
+    }
+
+    public void setLost(boolean lost) {
+        this.lost = lost;
+    }
+
+    @Override
+    public String toString() {
+        return "Robot{" +
+                "currentPosition=" + currentPosition +
+                ", currentOrientation=" + currentOrientation +
+                ", instructions='" + instructions + '\'' +
+                '}';
     }
 }
