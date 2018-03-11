@@ -14,6 +14,8 @@ public class MarsExplorer {
     }
 
     public void addRobot(Robot robot) {
+        //need to validate if the instructions passed in are correct
+        robot.addCommands(robot.getInstructions()); //converting instructions to commands after validation
         robots.add(robot);
     }
 

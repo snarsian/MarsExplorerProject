@@ -5,9 +5,13 @@ public class Position {
     private final int xCoordinate;
     private final int yCoordinate;
 
-    public Position(int xCoordinate, int yCoordinate) {
+    private Position(int xCoordinate, int yCoordinate) {
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
+    }
+
+    public static Position position(int xCoordinate, int yCoordinate){
+        return new Position(xCoordinate,yCoordinate);
     }
 
     @Override
