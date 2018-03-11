@@ -1,8 +1,15 @@
-import static org.junit.Assert.*;
+package com.martianrobots.model;
 
-/**
- * Created by SNA50 on 11/03/2018.
- */
+import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class PositionTest {
 
+    @Test
+    public void validateTheXAndYCoordinatesAreSetCorrectly() {
+        Position position = new Position(5, 2);
+        assertThat(position.getXCoordinate()).isEqualTo(5);
+        assertThat(position.getYCoordinate()).isEqualTo(2);
+    }
 }

@@ -1,8 +1,14 @@
-import static org.junit.Assert.*;
+package com.martianrobots.model;
 
-/**
- * Created by SNA50 on 11/03/2018.
- */
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
+
+import static com.martianrobots.model.Orientation.*;
+
 public class OrientationTest {
 
+    @Test
+    public void shouldReturnOrientations() {
+        Assertions.assertThat(values()).containsExactly(N, S, E, W);
+    }
 }
